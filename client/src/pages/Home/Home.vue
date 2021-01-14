@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div class="home-container">
+    <v-btn class="perf-button text-capitalize px-16 py-8 rounded-lg" elevation="0" color="primary" x-large>
+      Performances</v-btn
+    >
+  </div>
 </template>
 
 <script lang="ts">
@@ -13,20 +17,17 @@ export default Vue.extend({
 });
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-h3 {
-  margin: 40px 0 0;
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #fbfbff;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+.perf-button {
+  font-size: 1.2em !important;
+  letter-spacing: 1px;
 }
 </style>
