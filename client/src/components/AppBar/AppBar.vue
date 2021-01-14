@@ -1,7 +1,7 @@
 <template>
-  <div class="container">
-    <img src="@/assets/logo.svg" height="50" />
-    <img src="@/assets/polygon.png" height="80" />
+  <div class="container py-5">
+    <img src="@/assets/logo.svg" height="30" />
+    <img src="@/assets/polygon.png" height="60" />
   </div>
 </template>
 
@@ -20,6 +20,5 @@ export default Vue.extend({
 .container {
   display: flex;
   align-items: center;
-  height: 100px;
 }
 </style>

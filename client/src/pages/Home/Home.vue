@@ -27,7 +27,7 @@ export default Vue.extend({
 }
 
 .perf-button {
-  font-size: 1.2em !important;
+  font-size: 1.3em !important;
   letter-spacing: 1px;
 }
 </style>
