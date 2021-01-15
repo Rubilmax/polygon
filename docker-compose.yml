@@ -1,0 +1,43 @@
+version: "3.8"
+
+services:
+  polygon-client:
+    build:
+      context: ./client
+      dockerfile: ./docker/Dockerfile
+    image: polygon-client
+    command: yarn serve
+    volumes:
+      - ./client:/polygon-client
+    ports:
+      - 8080:8080
+    expose:
+      - 8080
+  polygon-server:
+    build:
+      context: ./server
+      dockerfile: ./docker/Dockerfile
+    image: polygon-server
+    command: make start
+    volumes:
+      - ./server:/polygon-server
+    ports:
+      - 8000:8000
+    expose:
+      - 8000
+  polygon-db:
+    build:
+      context: ./db
+      dockerfile: ./docker/Dockerfile
+    image: polygon-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: polygon_db
+      MYSQL_USER: polygon_user
+      MYSQL_PASSWORD: polygon_password
+    volumes:
+      - ./db/data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
