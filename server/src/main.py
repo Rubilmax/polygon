@@ -40,13 +40,13 @@ def save_tracking(start_time: float, timestamp: datetime):
 
 @app.get("/performances", response_model=schemas.Performances)
 async def get_performances(
-    background_tasks: BackgroundTasks, timeframe_hours: Optional[str] = "24"
+    background_tasks: BackgroundTasks, timeframeHours: Optional[str] = "24"
 ):
     start_time = time.time()
     timestamp = datetime.utcnow()
     background_tasks.add_task(save_tracking, start_time, timestamp)
 
-    datetime_origin = timestamp - timedelta(hours=float(timeframe_hours))
+    datetime_origin = timestamp - timedelta(hours=float(timeframeHours))
 
     min_completion_time, avg_completion_time, max_completion_time = (
         db.session.query(
@@ -59,7 +59,7 @@ async def get_performances(
     )
 
     return {
-        "min_completion_time": min_completion_time,
-        "avg_completion_time": avg_completion_time,
-        "max_completion_time": max_completion_time,
+        "minCompletionTime": min_completion_time,
+        "avgCompletionTime": avg_completion_time,
+        "maxCompletionTime": max_completion_time,
     }

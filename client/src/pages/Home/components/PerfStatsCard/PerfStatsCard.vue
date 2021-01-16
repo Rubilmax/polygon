@@ -35,17 +35,17 @@ export default Vue.extend({
     maxCompletionTime: -1,
   }),
   created: function () {
-    this.fetchPerformances().then((perfStatsResponse) => {
-      this.minCompletionTime = perfStatsResponse.min_completion_time;
-      this.avgCompletionTime = perfStatsResponse.avg_completion_time;
-      this.maxCompletionTime = perfStatsResponse.max_completion_time;
+    this.fetchPerformances().then(({ minCompletionTime, avgCompletionTime, maxCompletionTime }) => {
+      this.minCompletionTime = minCompletionTime;
+      this.avgCompletionTime = avgCompletionTime;
+      this.maxCompletionTime = maxCompletionTime;
     });
   },
   methods: {
     async fetchPerformances(): Promise<PerfStats> {
-      const { body: perfStatsResponse } = await superagent.get(
-        `http://127.0.0.1:8000/performances?timeframe_hours=${this.timeframeHours}`,
-      );
+      const { body: perfStatsResponse } = await superagent
+        .get(`http://127.0.0.1:8000/performances`)
+        .query({ timeframeHours: this.timeframeHours });
 
       return perfStatsResponse;
     },
