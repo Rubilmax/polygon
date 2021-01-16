@@ -1,4 +1,5 @@
 fastapi===0.63.0
 fastapi-sqlalchemy===0.2.1
+mysqlclient===2.0.3
 uvicorn
 black
