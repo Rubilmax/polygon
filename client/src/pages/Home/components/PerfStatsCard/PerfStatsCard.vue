@@ -3,15 +3,16 @@
     <v-card-title>{{ title }}</v-card-title>
     <v-divider />
     <div class="perf-stats">
-      <div class="perf-stat">
+      <v-progress-circular v-if="loading" indeterminate></v-progress-circular>
+      <div class="perf-stat" v-if="!loading">
         <span>Min</span>
         <span class="accent--text">{{ displayTime(minCompletionTime) }}</span>
       </div>
-      <div class="perf-stat">
+      <div class="perf-stat" v-if="!loading">
         <span>Avg</span>
         <span class="accent--text">{{ displayTime(avgCompletionTime) }}</span>
       </div>
-      <div class="perf-stat">
+      <div class="perf-stat" v-if="!loading">
         <span>Max</span>
         <span class="accent--text">{{ displayTime(maxCompletionTime) }}</span>
       </div>
@@ -31,6 +32,7 @@ export default Vue.extend({
     timeframeHours: Number,
   },
   data: () => ({
+    loading: true,
     minCompletionTime: -1,
     avgCompletionTime: -1,
     maxCompletionTime: -1,
@@ -40,6 +42,8 @@ export default Vue.extend({
       this.minCompletionTime = minCompletionTime;
       this.avgCompletionTime = avgCompletionTime;
       this.maxCompletionTime = maxCompletionTime;
+
+      this.loading = false;
     });
   },
   methods: {
