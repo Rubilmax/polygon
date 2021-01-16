@@ -8,6 +8,8 @@
 
 - `make start`
 
+Alternatively, if you don't have `make`, you can just `docker-compose up -d --build`
+
 ## Usage
 
 - Once started, go to https://localhost:8080
@@ -46,3 +48,4 @@ and managing pages/views inside `pages/`, which in turn also contains local comp
 
 - Separate backend into Resources, Services and DAO (unrelevant for now because we only have on route and this is a prototype)
 - Add MySQL migrations support (to update database schema as we develop)
+- Change Docker images to slim/alpine for production
