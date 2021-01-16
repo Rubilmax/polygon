@@ -58,3 +58,4 @@ and managing pages/views inside `pages/`, which in turn also contains local comp
 - Add MySQL migrations support (to update database schema as we develop)
 - Change Docker images to slim/alpine for production and ship production-ready commands
 - Separate backend dev requirements from requirements.txt
+- Use environment variables for db credentials inside backend
