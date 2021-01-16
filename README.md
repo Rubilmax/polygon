@@ -18,11 +18,15 @@ Alternatively, if you don't have `make`, you can just `docker-compose up -d --bu
 
 ## Development
 
+#### Technical stack
+
 - Using TypeScript for Vue.js static typing
 - Using Prettier for typescript formatting
 - Using Black for python formatting
 - Using Swagger for backend documentation: http://localhost:8000/docs
 - Also using ReDoc for backend documentation: http://localhost:8000/redoc
+
+#### Start development
 
 - `make start-db`
 - `make start-client`
