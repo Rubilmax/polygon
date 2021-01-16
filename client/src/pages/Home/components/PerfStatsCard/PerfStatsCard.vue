@@ -5,15 +5,15 @@
     <div class="perf-stats">
       <div class="perf-stat">
         <span>Min</span>
-        <span class="accent--text">0.3s</span>
+        <span class="accent--text">{{ displayTime(minCompletionTime) }}</span>
       </div>
       <div class="perf-stat">
         <span>Avg</span>
-        <span class="accent--text">0.3s</span>
+        <span class="accent--text">{{ displayTime(avgCompletionTime) }}</span>
       </div>
       <div class="perf-stat">
         <span>Max</span>
-        <span class="accent--text">0.3s</span>
+        <span class="accent--text">{{ displayTime(maxCompletionTime) }}</span>
       </div>
     </div>
   </v-card>
@@ -21,11 +21,43 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import superagent from 'superagent';
 
 export default Vue.extend({
   name: 'PerfStatsCard',
   props: {
     title: String,
+    timeframeHours: String,
+  },
+  data: () => ({
+    minCompletionTime: -1,
+    avgCompletionTime: -1,
+    maxCompletionTime: -1,
+  }),
+  created: function () {
+    this.fetchPerformances().then((perfStatsResponse) => {
+      this.minCompletionTime = perfStatsResponse.min_completion_time;
+      this.avgCompletionTime = perfStatsResponse.avg_completion_time;
+      this.maxCompletionTime = perfStatsResponse.max_completion_time;
+    });
+  },
+  methods: {
+    async fetchPerformances(): Promise<PerfStats> {
+      const { body: perfStatsResponse } = await superagent.get(
+        `http://127.0.0.1:8000/performances?timeframe_hours=${this.timeframeHours}`,
+      );
+
+      return perfStatsResponse;
+    },
+    displayTime(time: number) {
+      if (time < 0) return 'Unknown';
+
+      if (time >= 1) {
+        return Math.round(time * 100) / 100 + 's';
+      }
+
+      return Math.round(time * 1000 * 100) / 100 + 'ms';
+    },
   },
 });
 </script>

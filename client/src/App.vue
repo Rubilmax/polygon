@@ -15,9 +15,5 @@ export default Vue.extend({
     AppBar,
     Home,
   },
-
-  data: () => ({
-    //
-  }),
 });
 </script>

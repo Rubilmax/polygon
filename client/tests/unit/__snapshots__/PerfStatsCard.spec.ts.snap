@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PerfStatsCard.vue should match snapshot 1`] = `
+<v-card elevation="1" class="perf-card">
+  <v-card-title>Le Seigneur Des Anneaux</v-card-title>
+  <v-divider></v-divider>
+  <div class="perf-stats">
+    <div class="perf-stat"><span>Min</span> <span class="accent--text">0ms</span></div>
+    <div class="perf-stat"><span>Avg</span> <span class="accent--text">0ms</span></div>
+    <div class="perf-stat"><span>Max</span> <span class="accent--text">0ms</span></div>
+  </div>
+</v-card>
+`;

@@ -22,9 +22,9 @@
           </v-btn>
         </v-toolbar>
         <div class="container">
-          <PerfStatsCard title="Over the last 24 hours" />
-          <PerfStatsCard title="Over the last 7 days" />
-          <PerfStatsCard title="Over the last 28 days" />
+          <PerfStatsCard title="Over the last 24 hours" timeframeHours="24" />
+          <PerfStatsCard title="Over the last 7 days" timeframeHours="168" />
+          <PerfStatsCard title="Over the last 28 days" timeframeHours="672" />
         </div>
       </v-card>
     </v-dialog>

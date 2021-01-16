@@ -1,7 +1,7 @@
 <template>
   <div class="container py-5">
-    <img src="@/assets/logo.svg" height="30" />
-    <img src="@/assets/polygon.png" height="60" />
+    <img src="@/assets/logo.svg" alt="Polygon icon" height="30" />
+    <img src="@/assets/polygon.png" alt="Polygon logo" height="60" />
   </div>
 </template>
 

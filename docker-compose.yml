@@ -6,7 +6,7 @@ services:
       context: ./client
       dockerfile: ./docker/Dockerfile
     image: polygon-client
-    command: yarn serve
+    command: yarn start
     volumes:
       - ./client:/polygon-client
     ports:
