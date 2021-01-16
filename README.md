@@ -22,6 +22,7 @@ Alternatively, if you don't have `make`, you can just `docker-compose up -d --bu
 - Using Prettier for typescript formatting
 - Using Black for python formatting
 - Using Swagger for backend documentation: http://localhost:8000/docs
+- Also using ReDoc for backend documentation: http://localhost:8000/redoc
 
 - `make start-db`
 - `make start-client`
@@ -48,4 +49,5 @@ and managing pages/views inside `pages/`, which in turn also contains local comp
 
 - Separate backend into Resources, Services and DAO (unrelevant for now because we only have on route and this is a prototype)
 - Add MySQL migrations support (to update database schema as we develop)
-- Change Docker images to slim/alpine for production
+- Change Docker images to slim/alpine for production and ship production-ready commands
+- Separate backend dev requirements from requirements.txt
