@@ -3,3 +3,6 @@ start-server:
 
 start-client:
 	cd client && yarn start
+
+start:
+	docker-compose up -d --build
