@@ -1,8 +1,8 @@
 start-server:
-	cd server && make start
+	docker-compose up -d --build polygon-server
 
 start-client:
-	cd client && yarn start
+	docker-compose up -d --build polygon-client
 
 start-db:
 	docker-compose up -d --build polygon-db
