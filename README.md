@@ -1,5 +1,7 @@
 # Polygon project
 
+Not production-ready!
+
 ## Requirements
 
 - Docker compose
@@ -13,6 +15,7 @@ Alternatively, if you don't have `make`, you can just `docker-compose up -d --bu
 ## Usage
 
 - Once started, go to https://localhost:8080
+- The first time you query /performances, you'll get unknown completion time, as you've just made the first query to the backend. Just re-query it to get not-unknown results!
 - Add, modify, delete Trackings from the db at: mysql://polygon_user:polygon_password@127.0.0.1:3306/polygon_db (I recommend using DBeaver)
 - See on the home page that your changes are taken into account in performances computation
 
