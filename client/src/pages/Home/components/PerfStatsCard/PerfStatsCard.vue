@@ -21,13 +21,14 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import superagent from 'superagent';
+
+import { getPerformances } from '@/services/performances';
 
 export default Vue.extend({
   name: 'PerfStatsCard',
   props: {
     title: String,
-    timeframeHours: String,
+    timeframeHours: Number,
   },
   data: () => ({
     minCompletionTime: -1,
@@ -35,20 +36,13 @@ export default Vue.extend({
     maxCompletionTime: -1,
   }),
   created: function () {
-    this.fetchPerformances().then(({ minCompletionTime, avgCompletionTime, maxCompletionTime }) => {
+    getPerformances(Number(this.timeframeHours)).then(({ minCompletionTime, avgCompletionTime, maxCompletionTime }) => {
       this.minCompletionTime = minCompletionTime;
       this.avgCompletionTime = avgCompletionTime;
       this.maxCompletionTime = maxCompletionTime;
     });
   },
   methods: {
-    async fetchPerformances(): Promise<PerfStats> {
-      const { body: perfStatsResponse } = await superagent
-        .get(`http://127.0.0.1:8000/performances`)
-        .query({ timeframeHours: this.timeframeHours });
-
-      return perfStatsResponse;
-    },
     displayTime(time: number) {
       if (time < 0) return 'Unknown';
 
