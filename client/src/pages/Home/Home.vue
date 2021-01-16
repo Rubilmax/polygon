@@ -10,7 +10,7 @@
       Performances</v-btn
     >
     <v-dialog v-model="isDialogOpen" width="500">
-      <v-card>
+      <v-card class="dialog-card">
         <v-toolbar color="secondary" flat>
           <v-toolbar-title class="text-h6">Performances</v-toolbar-title><v-spacer /><v-btn
             class="text-h6 text-capitalize"
@@ -21,7 +21,8 @@
             Close <v-icon color="accent">mdi-close</v-icon>
           </v-btn>
         </v-toolbar>
-        <div class="container">
+        <div class="container" v-if="isDialogOpen">
+          <!-- v-if to unmount following components so that they update their stats next time they are displayed -->
           <PerfStatsCard title="Over the last 24 hours" timeframeHours="24" />
           <PerfStatsCard title="Over the last 7 days" timeframeHours="168" />
           <PerfStatsCard title="Over the last 28 days" timeframeHours="672" />
@@ -79,5 +80,9 @@ export default Vue.extend({
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
+}
+
+.dialog-card {
+  min-height: 500px; // for animation purposes
 }
 </style>

@@ -22,7 +22,7 @@ app.add_middleware(
 )
 app.add_middleware(
     DBSessionMiddleware,
-    db_url="mysql://polygon_user:polygon_password@127.0.0.1:3306/polygon_db",
+    db_url="mysql://polygon_user:polygon_password@host.docker.internal:3306/polygon_db",
 )
 
 

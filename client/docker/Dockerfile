@@ -8,3 +8,5 @@ COPY ./yarn.lock .
 
 RUN yarn
 RUN yarn global add @vue/cli-service
+
+EXPOSE 8080

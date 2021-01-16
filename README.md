@@ -14,7 +14,7 @@ Alternatively, if you don't have `make`, you can just `docker-compose up -d --bu
 
 ## Usage
 
-- Once started, go to https://localhost:8080
+- Once started, go to https://localhost:3000
 - The first time you query /performances, you'll get unknown completion time, as you've just made the first query to the backend. Just re-query it to get not-unknown results!
 - Add, modify, delete Trackings from the db at: mysql://polygon_user:polygon_password@127.0.0.1:3306/polygon_db (I recommend using DBeaver)
 - See on the home page that your changes are taken into account in performances computation
@@ -26,8 +26,8 @@ Alternatively, if you don't have `make`, you can just `docker-compose up -d --bu
 - Using TypeScript for Vue.js static typing
 - Using Prettier for typescript formatting
 - Using Black for python formatting
-- Using Swagger for backend documentation: http://localhost:8000/docs
-- Also using ReDoc for backend documentation: http://localhost:8000/redoc
+- Using Swagger for backend documentation: http://localhost:5000/docs
+- Also using ReDoc for backend documentation: http://localhost:5000/redoc
 
 #### Start development
 
