@@ -5,7 +5,11 @@ describe('PerfStatsCard.vue', () => {
   it('should match snapshot', () => {
     expect(
       shallowMount(PerfStatsCard, {
-        propsData: { title: 'Le Seigneur Des Anneaux', timeframeHours: '9' },
+        propsData: {
+          title: 'Le Seigneur Des Anneaux',
+          timeframeHours: 9,
+          displayed: true,
+        },
       }),
     ).toMatchSnapshot();
   });

@@ -23,7 +23,7 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import { getTimeDisplay, getPerformances } from '../../../../services/performances';
+import { getTimeDisplay, getPerformances } from '@/services/performances';
 
 export default Vue.extend({
   name: 'PerfStatsCard',
