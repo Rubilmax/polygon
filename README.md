@@ -46,15 +46,15 @@ and managing pages/views inside `pages/`, which in turn also contains local comp
 
 #### Backend
 
-- Using BackgroundTasks shipped with FastAPI on the backend, to avoid blocking request because of entity being saved to db
-(also allows asynchronous completion time computation, which is thus reliable truth)
+- Process trackings in Middleware so that we record what's happening in the request (get the status code and completion time)
+(could have moved this logic inside an asynchronous task to avoid blocking the request)
 - Using SQLAlchemy for db interface because it's the best tool for data management (fast, scalable, maintainable)
 - Using Pydantic schemas (could have been called DTOs) to manage inbound and outbound json data
 
 
 ## Improvements
 
-- Separate backend into Resources, Services and DAO (unrelevant for now because we only have on route and this is a prototype)
+- Separate backend routes into Resources (unrelevant for now because we only have on route and this is a prototype)
 - Add MySQL migrations support (to update database schema as we develop)
 - Change Docker images to slim/alpine for production and ship production-ready commands
 - Separate backend dev requirements from requirements.txt

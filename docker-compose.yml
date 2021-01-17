@@ -21,6 +21,8 @@ services:
       - ./server:/polygon-server
     ports:
       - "5000:5000"
+    depends_on:
+      - polygon-db
   polygon-db:
     build:
       context: ./db

@@ -6,7 +6,7 @@ class Tracking(BaseModel):
     id: int
     status_code: int
     completion_time: float
-    timestamp: datetime
+    request_datetime: datetime
 
     class Config:
         orm_mode = True
