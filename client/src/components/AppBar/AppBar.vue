@@ -10,9 +10,6 @@ import Vue from 'vue';
 
 export default Vue.extend({
   name: 'AppBar',
-  props: {
-    msg: String,
-  },
 });
 </script>
 

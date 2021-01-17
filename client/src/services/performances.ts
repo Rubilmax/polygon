@@ -13,3 +13,13 @@ export const getPerformances = async (timeframeHours: number): Promise<Performan
 
   return PerformancesResponse;
 };
+
+export const getTimeDisplay = (time: number) => {
+  if (time < 0) return 'Unknown';
+
+  if (time >= 1) {
+    return Math.round(time * 100) / 100 + 's';
+  }
+
+  return Math.round(time * 1000 * 100) / 100 + 'ms';
+};

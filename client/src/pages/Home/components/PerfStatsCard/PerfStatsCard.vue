@@ -6,15 +6,15 @@
       <v-progress-circular v-if="loading" indeterminate></v-progress-circular>
       <div class="perf-stat" v-if="!loading">
         <span>Min</span>
-        <span class="accent--text">{{ displayTime(minCompletionTime) }}</span>
+        <span class="accent--text">{{ minCompletionTimeDisplay }}</span>
       </div>
       <div class="perf-stat" v-if="!loading">
         <span>Avg</span>
-        <span class="accent--text">{{ displayTime(avgCompletionTime) }}</span>
+        <span class="accent--text">{{ avgCompletionTimeDisplay }}</span>
       </div>
       <div class="perf-stat" v-if="!loading">
         <span>Max</span>
-        <span class="accent--text">{{ displayTime(maxCompletionTime) }}</span>
+        <span class="accent--text">{{ maxCompletionTimeDisplay }}</span>
       </div>
     </div>
   </v-card>
@@ -23,38 +23,53 @@
 <script lang="ts">
 import Vue from 'vue';
 
-import { getPerformances } from '@/services/performances';
+import { getTimeDisplay, getPerformances } from '../../../../services/performances';
 
 export default Vue.extend({
   name: 'PerfStatsCard',
   props: {
     title: String,
     timeframeHours: Number,
+    displayed: Boolean,
   },
   data: () => ({
-    loading: true,
+    loading: false,
     minCompletionTime: -1,
     avgCompletionTime: -1,
     maxCompletionTime: -1,
   }),
-  created: function () {
-    getPerformances(Number(this.timeframeHours)).then(({ minCompletionTime, avgCompletionTime, maxCompletionTime }) => {
-      this.minCompletionTime = minCompletionTime;
-      this.avgCompletionTime = avgCompletionTime;
-      this.maxCompletionTime = maxCompletionTime;
-
-      this.loading = false;
-    });
-  },
   methods: {
-    displayTime(time: number) {
-      if (time < 0) return 'Unknown';
+    fetchPerformances() {
+      if (this.displayed) {
+        this.loading = true;
 
-      if (time >= 1) {
-        return Math.round(time * 100) / 100 + 's';
+        getPerformances(this.timeframeHours).then(({ minCompletionTime, avgCompletionTime, maxCompletionTime }) => {
+          this.minCompletionTime = minCompletionTime;
+          this.avgCompletionTime = avgCompletionTime;
+          this.maxCompletionTime = maxCompletionTime;
+
+          this.loading = false;
+        });
       }
-
-      return Math.round(time * 1000 * 100) / 100 + 'ms';
+    },
+  },
+  computed: {
+    minCompletionTimeDisplay: function () {
+      return getTimeDisplay(this.minCompletionTime);
+    },
+    avgCompletionTimeDisplay: function () {
+      return getTimeDisplay(this.avgCompletionTime);
+    },
+    maxCompletionTimeDisplay: function () {
+      return getTimeDisplay(this.maxCompletionTime);
+    },
+  },
+  watch: {
+    displayed: {
+      immediate: true,
+      handler() {
+        this.fetchPerformances();
+      },
     },
   },
 });

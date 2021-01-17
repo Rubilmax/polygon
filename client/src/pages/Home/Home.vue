@@ -21,11 +21,11 @@
             Close <v-icon color="accent">mdi-close</v-icon>
           </v-btn>
         </v-toolbar>
-        <div class="container" v-if="isDialogOpen">
+        <div class="container">
           <!-- v-if to unmount following components so that they update their stats next time they are displayed -->
-          <PerfStatsCard title="Over the last 24 hours" timeframeHours="24" />
-          <PerfStatsCard title="Over the last 7 days" timeframeHours="168" />
-          <PerfStatsCard title="Over the last 28 days" timeframeHours="672" />
+          <PerfStatsCard title="Over the last 24 hours" :timeframeHours="24" :displayed="isDialogOpen" />
+          <PerfStatsCard title="Over the last 7 days" :timeframeHours="168" :displayed="isDialogOpen" />
+          <PerfStatsCard title="Over the last 28 days" :timeframeHours="672" :displayed="isDialogOpen" />
         </div>
       </v-card>
     </v-dialog>
@@ -80,9 +80,5 @@ export default Vue.extend({
   align-items: center;
   justify-content: space-between;
   font-weight: 600;
-}
-
-.dialog-card {
-  min-height: 500px; // for animation purposes
 }
 </style>
